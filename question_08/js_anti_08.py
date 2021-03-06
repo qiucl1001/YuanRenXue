@@ -141,7 +141,8 @@ def main():
             get_one_page(session, page)
         # break
 
-    print(sorted(Counter(SUM_TOTAL_LIST).items(), key=lambda x: x[1], reverse=True)[0][0])
+    # 下面方法缺陷：当出现同频率的元素只能返回其中的一个
+    # print(sorted(Counter(SUM_TOTAL_LIST).items(), key=lambda x: x[1], reverse=True)[0][0])
 
 
 if __name__ == '__main__':
