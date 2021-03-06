@@ -41,6 +41,11 @@ def get_click_characters_and_image(session, page):
 
 
 def handle_image(page):
+    """
+    图片干扰处理这块 ---> 借鉴来自Java_S大佬
+    url详解地址：https://syjun.vip/archives/284.html
+    大佬本人此项目地址为：Java-S12138/yuanrenxue_python_spider
+    """
     # cv2.imread读取图像
     im = cv2.imread(f'{page}_origin.png')
     # img.shape可以获得图像的形状，返回值是一个包含行数，列数，通道数的元组 (100, 100, 3)
