@@ -121,6 +121,24 @@ def get_one_page(session, page):
                     SUM_TOTAL_LIST.append(item.get('value'))
 
 
+def most_common():
+    d = {}
+    for i in SUM_TOTAL_LIST:
+        d[i] = d.get(i, 0) + 1
+    ret = []
+    n = None
+    for j in sorted(d.items(), reverse=True, key=lambda x: x[1]):
+        if len(ret) == 0:
+            ret.append(j[0])
+            n = j[1]
+        else:
+            if j[1] == n:
+                ret.append(j[0])
+            else:
+                break
+    return ret
+
+
 def main():
     session = requests.Session()
     headers = {
@@ -143,6 +161,9 @@ def main():
 
     # 下面方法缺陷：当出现同频率的元素只能返回其中的一个
     # print(sorted(Counter(SUM_TOTAL_LIST).items(), key=lambda x: x[1], reverse=True)[0][0])
+
+    ret = most_common()  # 当出现同频率的元素都会被捕捉到
+    print(ret)
 
 
 if __name__ == '__main__':
